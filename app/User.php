@@ -15,8 +15,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table='usuarios';
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'nombre', 'email', 'password',
     ];
 
     /**
@@ -36,4 +38,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setNombreAttibute($value){
+        $this->attributes['nombre']=ucwords(strtolower($value));  //Mutadores para la asignacion de nombre de usuario
+    }
 }
