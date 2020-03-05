@@ -15,10 +15,10 @@
 Auth::routes();
 Route::resource('productos','productosController');
 
-Route::prefix('admin')->group(function(){
+Route::prefix('perfil')->group(function(){
 
-    Route::get('/','administradorController@index')
-        ->name('admin');
+    Route::get('/','perfilController@index')
+        ->name('perfil');
 });
 
 Route::prefix('tienda')->group(function (){
