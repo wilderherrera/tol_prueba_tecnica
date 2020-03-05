@@ -11,10 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
+Route::resource('productos','productosController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('admin')->group(function(){
+
+    Route::get('/','administradorController@index')
+        ->name('admin');
+});
+
+Route::prefix('tienda')->group(function (){
+     Route::get('/','tiendaController@index');
+});
+
+Route::prefix('carrito')->group(function (){
+        Route::get('/','carritoController@index');
+});
+
+
+
