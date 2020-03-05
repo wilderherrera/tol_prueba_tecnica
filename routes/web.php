@@ -22,7 +22,7 @@ Route::prefix('perfil')->group(function(){
 });
 
 Route::prefix('tienda')->group(function (){
-     Route::get('/','tiendaController@index');
+     Route::get('/','tiendaController@index')->name('tienda');
 });
 
 Route::prefix('carrito')->group(function (){
