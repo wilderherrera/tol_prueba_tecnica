@@ -22,8 +22,10 @@ Route::prefix('orden')->group(function (){
 });
 
 
+Route::get('/carrito','carritoController@index');
 
-Route::get('/quitar_carrito/{id}','tiendaController@quitar_producto_carrito')
+
+Route::get('/quitar_carrito/{id}','carritoController@quitar_producto_carrito')
         ->name('quitar_de_carrito')
         ->middleware('auth');;
 
@@ -47,9 +49,8 @@ Route::prefix('perfil')->group(function(){
 
 
 
-Route::prefix('carrito')->group(function (){
-        Route::get('/','carritoController@index');
-});
+
+
 
 
 

@@ -31,6 +31,9 @@ class ordenController extends Controller
 
         foreach($orden['productos'] as $producto)
             {
+                 productos::find($producto->id)->update([
+                            'stock'=>productos::find($producto->id)['stock']-1,
+                 ]);
                  productos_ordenes::create([
                         'id_productos'=>$producto->id,
                         'id_ordenes'=>$id_orden,

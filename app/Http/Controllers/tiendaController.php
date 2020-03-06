@@ -22,14 +22,5 @@ class tiendaController extends Controller
                     ]);
     }
 
-    public function quitar_producto_carrito($id){
 
-        $id_array = \Session::pull('productos_carrito', []); // Second argument is a default value
-        if(($key = array_search($id, $id_array)) !== false) {
-            unset($id_array[$key]);
-        }
-        \Session::put('productos_carrito', $id_array);
-
-        return redirect(route('orden'));
-    }
 }
