@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/carrito_add','carritoController@addProducto')->name('carrito_add');
+Route::post('/carrito_subb','carritoController@subbProducto')->name('carrito_subb');

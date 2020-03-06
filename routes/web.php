@@ -11,8 +11,12 @@
 |
 */
 
+Route::get('/','tiendaController@index')->name('tienda');
+
+
 
 Auth::routes();
+
 Route::prefix('productos')->group(function (){
     Route::get('/','productosController@index')->name('productos.index');
     Route::get('/crear','productosController@create')->name('productos.crear');
@@ -28,9 +32,7 @@ Route::prefix('perfil')->group(function(){
         ->name('perfil');
 });
 
-Route::prefix('tienda')->group(function (){
-     Route::get('/','tiendaController@index')->name('tienda');
-});
+
 
 Route::prefix('carrito')->group(function (){
         Route::get('/','carritoController@index');

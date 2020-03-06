@@ -3,6 +3,7 @@
     <div class="row">
 
         <div class="col-md-6 offset-md-3 mt-5 bg-light p-4 text-center">
+            <p><a href="{{route('productos.crear')}}"><span class="fas fa-plus"></span> Añadir producto</a></p>
             <table align="center" class="table table-striped table-bordered">
                 <thead>
                 <th><span class="fas fa-tags"></span> Nombre</th>

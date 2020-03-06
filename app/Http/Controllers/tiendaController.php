@@ -14,4 +14,5 @@ class tiendaController extends Controller
                         'productos'=>productos::all(),
                     ]);
     }
+
 }
