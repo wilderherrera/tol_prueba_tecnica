@@ -13,7 +13,14 @@
 
 
 Auth::routes();
-Route::resource('productos','productosController');
+Route::prefix('productos')->group(function (){
+    Route::get('/','productosController@index')->name('productos.index');
+    Route::get('/crear','productosController@create')->name('productos.crear');
+    Route::post('/guardar','productosController@store')->name('productos.guardar');
+    Route::get('/editar/{id}','productosController@edit')->name('productos.editar');
+    Route::post('/actualizar/{id}','productosController@update')->name('productos.actualizar');
+    Route::get('/borrar/{id}','productosController@destroy')->name('productos.borrar');
+});
 
 Route::prefix('perfil')->group(function(){
 

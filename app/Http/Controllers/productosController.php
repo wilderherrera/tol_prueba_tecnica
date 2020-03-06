@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\productos;
 use Illuminate\Http\Request;
-
 class productosController extends Controller
 {
     public function __construct()
@@ -18,7 +18,7 @@ class productosController extends Controller
      */
     public function index()
     {
-        //
+        return view('productos.ver')->with('productos',productos::all());
     }
 
     /**
@@ -28,7 +28,7 @@ class productosController extends Controller
      */
     public function create()
     {
-        //
+        return view('productos.crear');
     }
 
     /**
@@ -39,7 +39,21 @@ class productosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation=$request->validate([
+                'nombre'=>'required|unique:productos',
+                'precio'=>'required|min:0',
+                'descripcion'=>'required',
+                'stock'=>'required',
+        ]);
+
+        productos::create([
+            'nombre'=>$request->input('nombre'),
+            'precio'=>$request->input('precio'),
+            'descripcion'=>$request->input('descripcion'),
+            'stock'=>$request->input('stock'),
+        ]);
+
+        return redirect(route('productos.index'));
     }
 
     /**
@@ -61,7 +75,9 @@ class productosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('productos.editar')->with(['producto'=>productos::find($id)->first(),
+                                                     'producto_id'=>$id,
+                                                    ]);
     }
 
     /**
@@ -73,7 +89,16 @@ class productosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        productos::find($id)->update([
+            'nombre'=>$request->input('nombre'),
+            'precio'=>$request->input('precio'),
+            'stock'=>$request->input('stock'),
+            'descripcion'=>$request->input('descripcion'),
+        ]);
+
+        return redirect(route('productos.index'));
     }
 
     /**
@@ -84,6 +109,7 @@ class productosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        productos::destroy($id);
+        return redirect(route('productos.index'));
     }
 }
