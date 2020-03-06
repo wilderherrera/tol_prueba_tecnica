@@ -22,12 +22,21 @@
                 <p><b>NO SE ENCONTRARON PRODUCTOS REGISTRADOS</b></p>
             </div>
         @endforelse
+
     </div>
 @endsection
 @section('javascript')
     <script>
         $('#carrito_conteo').hide();
-        var conteo=0;
+
+        @if($productos_carrito>0)
+                var conteo={{$productos_carrito}};
+                $('#carrito_conteo').show(1000);
+         @else
+            var conteo=0;
+         @endif
+
+
         function add_carrito(id) {
             conteo++;
             $('#carrito_conteo').show(1000);
@@ -40,7 +49,7 @@
 
             $.ajax({
                 url:'{{route('carrito_add')}}',
-                method:'get',
+                method:'post',
                 dataType:'json',
                 data:{'id':id},
             });
@@ -55,7 +64,7 @@
 
             $.ajax({
                     url:'{{route('carrito_subb')}}',
-                    method:'get',
+                    method:'post',
                     dataType:'json',
                     data:{'id':id},
                 });

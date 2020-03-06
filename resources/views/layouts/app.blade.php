@@ -37,7 +37,9 @@
                             <a href="{{route('login')}}"><span class="fa fa-login"></span> Ingresar</a>
                         @endif
                     </div>
-                    <a href="" id="carrito_conteo"><span class="fas fa-shopping-cart text-white" > </span></a>
+
+                        <span class="fas fa-shopping-cart text-white" ><a href="{{route('tienda.orden')}}" id="carrito_conteo"> </a></span>
+
                 </nav>
             </div>
             @show

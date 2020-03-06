@@ -3,30 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class carritoController extends Controller
 {
 
     public function addProducto(Request $request){
-        if(!$request->session()->has('prueba'))
+        if(!Session::has('productos_carrito'))
         {
-            $request->session()->put('prueba',[]);
+            Session::put('productos_carrito',[]);
         }
 
-         $request->session()->push('prueba',$request->input('id'));
 
-        return response()->json(['id_carrito'=>$request->session()->get('prueba')]);
+        Session::push('productos_carrito',$request->input('id'));
+        Session::save();
+        return response()->json(['id_carrito'=>Session::get('productos_carrito')]);
 
     }
 
     public function subbProducto(Request $request){
-        $id_array = $request->session()->pull('prueba', []); // Second argument is a default value
+        $id_array = Session::pull('productos_carrito', []); // Second argument is a default value
         if(($key = array_search($request->input('id'), $id_array)) !== false) {
             unset($id_array[$key]);
         }
-        $request->session()->put('prueba', $id_array);
+        Session::put('productos_carrito', $id_array);
 
-        return response()->json(['id_carrito'=>$request->session()->get('prueba')]);
+        return response()->json(['id_carrito'=>\Session::get('productos_carrito')]);
     }
 
 }

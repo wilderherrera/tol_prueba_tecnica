@@ -12,8 +12,11 @@
 */
 
 Route::get('/','tiendaController@index')->name('tienda');
-
-
+Route::post('/carrito_add','carritoController@addProducto')->name('carrito_add');
+Route::post('/carrito_subb','carritoController@subbProducto')->name('carrito_subb');
+Route::get('/orden','tiendaController@index')
+            ->name('tienda.orden')
+            ->middleware('auth');
 
 Auth::routes();
 
