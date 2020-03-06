@@ -40,7 +40,7 @@
 
             $.ajax({
                 url:'{{route('carrito_add')}}',
-                method:'post',
+                method:'get',
                 dataType:'json',
                 data:{'id':id},
             });
@@ -52,14 +52,10 @@
                 }
                 $('#carrito_conteo').html(conteo);
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+
             $.ajax({
                     url:'{{route('carrito_subb')}}',
-                    method:'post',
+                    method:'get',
                     dataType:'json',
                     data:{'id':id},
                 });
