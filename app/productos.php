@@ -22,6 +22,8 @@ class productos extends Model
         $this->attributes['descripcion']=ucfirst(strtolower($value));
     }
 
-
+        public function ordenes_rel(){
+            return $this->belongsToMany('ordenes','productos_ordenes','id_ordenes','id');
+        }
 
 }

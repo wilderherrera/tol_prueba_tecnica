@@ -21,19 +21,7 @@ class tiendaController extends Controller
                         'productos_carrito'=>$productos_carrito,
                     ]);
     }
-    public function orden(){
-            $orden=[];
-            $costo_total=0;
-            if(\Session::has('productos_carrito')) {
-                foreach (\Session::get('productos_carrito') as $producto) {
-                    array_push($orden, productos::find($producto));
-                    $costo_total += productos::find($producto)['precio'];
-                }
 
-                return view('tienda.orden')->with(['productos' => $orden, 'total' => $costo_total]);
-            }
-
-    }
     public function quitar_producto_carrito($id){
 
         $id_array = \Session::pull('productos_carrito', []); // Second argument is a default value

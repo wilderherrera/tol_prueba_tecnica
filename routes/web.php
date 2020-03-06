@@ -12,9 +12,16 @@
 */
 Auth::routes();
 
-Route::get('/orden','tiendaController@orden')
-    ->name('orden')
-    ->middleware('auth');
+Route::prefix('orden')->group(function (){
+
+    Route::get('/','ordenController@orden')
+        ->name('orden');
+
+    Route::get('/finalizar','ordenController@finalizar')
+            ->name('orden.finalizar');
+});
+
+
 
 Route::get('/quitar_carrito/{id}','tiendaController@quitar_producto_carrito')
         ->name('quitar_de_carrito')

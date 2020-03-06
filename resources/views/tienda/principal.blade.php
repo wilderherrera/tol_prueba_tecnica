@@ -57,7 +57,7 @@
                 dataType:'json',
                 data:{'id':id},
                 success:(count_productos_carrito)=>{
-                    $('#carrito_conteo').show(1000);
+                    $('#carrito_conteo').show(200);
                     conteo=count_productos_carrito[0];
                     $('#carrito_conteo').html(conteo);
                 }
@@ -80,7 +80,7 @@
                     conteo=count_productos_carrito[0];
                     $('#carrito_conteo').html(conteo);
                     if(conteo==0){
-                        $('#carrito_conteo').hide(1000);
+                        $('#carrito_conteo').hide(500);
                     }
                 }
                 });

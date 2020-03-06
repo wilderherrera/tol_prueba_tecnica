@@ -21,7 +21,7 @@
 
         </table>
          @if($total>0)
-            <a href="route('orden.completar')"><h4 class="text-center btn btn-success text-white"><b><span class="fas fa-check"></span> Completar compra</b></h4></a>
+            <a href="{{route('orden.finalizar')}}"><h4 class="text-center btn btn-success text-white"><b><span class="fas fa-check"></span> Completar compra</b></h4></a>
              @endif
     </div>
 

@@ -42,4 +42,8 @@ class User extends Authenticatable
     public function setNombreAttibute($value){
         $this->attributes['nombre']=ucwords(strtolower($value));  //Mutadores para la asignacion de nombre de usuario
     }
+
+    public function ordenes_rel(){
+        return $this->hasMany('ordenes','id_usuario','id');
+    }
 }
