@@ -14,10 +14,9 @@ class carritoController extends Controller
             Session::put('productos_carrito',[]);
         }
 
-
         Session::push('productos_carrito',$request->input('id'));
         Session::save();
-        return response()->json(['id_carrito'=>Session::get('productos_carrito')]);
+        return response()->json([count(Session::get('productos_carrito'))]);
 
     }
 
@@ -28,7 +27,7 @@ class carritoController extends Controller
         }
         Session::put('productos_carrito', $id_array);
 
-        return response()->json(['id_carrito'=>\Session::get('productos_carrito')]);
+        return response()->json([count(Session::get('productos_carrito'))]);
     }
 
 }

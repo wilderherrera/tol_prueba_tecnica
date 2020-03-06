@@ -12,8 +12,12 @@
                 <p class="card-text"><b>Disponibilidad: </b> {{$producto->stock}} Unidades</p>
             </div>
                 <hr>
-                <p onclick="add_carrito({{$producto->id}})"> Añadir al carrito</p>
-                <p onclick="subb_carrito({{$producto->id}})"> Quitar del carrito</p>
+                <div class="col-md-6 offset-md-3 text-center">
+                    <button class="btn btn-success" onclick="add_carrito({{$producto->id}})"><span class="fas fa-plus"></span> Añadir al carrito</button>
+                    <hr>
+                    <button class="btn btn-warning" onclick="subb_carrito({{$producto->id}})"><span class="fas fa-trash-alt"></span> Quitar del carrito</button>
+                </div>
+                <br>
             </div>
         </div>
         @empty
@@ -32,15 +36,15 @@
         @if($productos_carrito>0)
                 var conteo={{$productos_carrito}};
                 $('#carrito_conteo').show(1000);
+                $('#carrito_conteo').html(' '+conteo);
          @else
             var conteo=0;
          @endif
 
-
         function add_carrito(id) {
-            conteo++;
-            $('#carrito_conteo').show(1000);
-            $('#carrito_conteo').html(conteo);
+
+
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -52,21 +56,33 @@
                 method:'post',
                 dataType:'json',
                 data:{'id':id},
+                success:(count_productos_carrito)=>{
+                    $('#carrito_conteo').show(1000);
+                    conteo=count_productos_carrito[0];
+                    $('#carrito_conteo').html(conteo);
+                }
             });
         }
         function subb_carrito(id) {
-                conteo--;
-                if(conteo==0){
-                    $('#carrito_conteo').hide(1000);
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-                $('#carrito_conteo').html(conteo);
-
-
+            });
             $.ajax({
                     url:'{{route('carrito_subb')}}',
                     method:'post',
                     dataType:'json',
                     data:{'id':id},
+                success:(count_productos_carrito)=>{
+                    conteo=count_productos_carrito[0];
+                    $('#carrito_conteo').html(conteo);
+                    if(conteo==0){
+                        $('#carrito_conteo').hide(1000);
+                    }
+                }
                 });
         }
     </script>

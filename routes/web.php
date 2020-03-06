@@ -10,15 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+Route::get('/orden','tiendaController@orden')
+    ->name('orden')
+    ->middleware('auth');
+
+Route::get('/quitar_carrito/{id}','tiendaController@quitar_producto_carrito')
+        ->name('quitar_de_carrito')
+        ->middleware('auth');;
 
 Route::get('/','tiendaController@index')->name('tienda');
-Route::post('/carrito_add','carritoController@addProducto')->name('carrito_add');
-Route::post('/carrito_subb','carritoController@subbProducto')->name('carrito_subb');
-Route::get('/orden','tiendaController@index')
-            ->name('tienda.orden')
-            ->middleware('auth');
 
-Auth::routes();
 
 Route::prefix('productos')->group(function (){
     Route::get('/','productosController@index')->name('productos.index');

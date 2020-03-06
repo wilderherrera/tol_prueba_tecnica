@@ -29,7 +29,7 @@
     @section('header')
             <div class="col-md-12 bg-dark" id="header">
                 <nav class="navbar navbar-expand-lg navbar-white">
-                    <a class="navbar-brand text-white" href="{{route('tienda')}}}">Tienda Tol</a>
+                    <a class="navbar-brand text-white" href="{{route('tienda')}}">Tienda Tol</a>
                     <div class="col-md-10 text-right">
                         @if(Auth::check())
                             <a href="{{route('perfil')}}" class="text-right text-white"><span style="color:#282e3d" class="fas fa-user text-light"></span><b> {{Auth::user()->nombre}}</b></a>
@@ -38,7 +38,7 @@
                         @endif
                     </div>
 
-                        <span class="fas fa-shopping-cart text-white" ><a href="{{route('tienda.orden')}}" id="carrito_conteo"> </a></span>
+                    <a href="{{route('orden')}}" ><span class="fas fa-shopping-cart"></span><p id="carrito_conteo" class="text-info" style="font-weight: bold"></a>
 
                 </nav>
             </div>
