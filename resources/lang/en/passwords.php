@@ -15,7 +15,7 @@ return [
 
     'reset' => 'Tu contraseña ha sido restaurada exitosamente',
     'sent' => 'Hemos enviado un link para reestablecer tu contraseña por correo',
-    'throttled' => 'Please wait before retrying.',
+    'throttled' => 'Has superado el numero de intentos permitido, por favor espera.',
     'token' => 'Este token de restauracion es invalido',
     'user' => "No podemos encontrar un usuario con este correo electronico",
 
