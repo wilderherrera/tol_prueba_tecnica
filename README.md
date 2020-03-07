@@ -12,20 +12,24 @@ El entregable es la URL del perfil público del repositorio donde se evidencie e
 
 ## Migraciones
 
-Se establecen cuatro tablas en una base de datos para la administración de los requerimientos solicitados en la prueba tecnica.
+Se establecen cuatro tablas en una base de datos para la administración de los requerimientos solicitados en la prueba técnica.
   #usuarios
   #productos
   #ordenes
   #productos_ordenes
 
-## Sessiones de usuario
+## Sesiones de usuario
 
-La logica par la creacion de usuarios y la administracion de sesiones se implementó utilizando las utilidades que ofrece laravel el cual crea rutas, controladores y vistas para el registro, el ingreso y la recuperación de contraseñas.
+La lógica para la creación de usuarios y la administración de sesiones se implementó utilizando las utilidades que ofrece Laravel el cual crea rutas, controladores y vistas para el registro, el ingreso y la recuperación de contraseñas.
 
 ##  Marketplace
 
-Para la creación del marketplace de maximo 5 productos por paginas, se utilizo el metodo "paginate" de eloquent para enviar a la vista solo 5 productos por pagina, las imagenes de cada producto se alojaron utilizado el metodo "Storage" de laravel que facilita el manejo de archivos.
+Para la creación del marketplace de máximo 5 productos por páginas, se utilizó el método "paginate" de Eloquent para enviar a la vista solo 5 productos por página, las imágenes de cada producto se alojaron utilizado el método "Storage" de Laravel que facilita el manejo de archivos.
 
 ## Carrito de compras
 
-Para el carrito de compras se utilizaron peticiones asincronas Ajax  para realizar la actualizacion de sessiones de laravel que contenian los ID de los productos de carrito a medida que el usuario selecciona los productos.
+Para el carrito de compras se utilizaron peticiones asíncronas Ajax para realizar la actualización de sesiones de Laravel que contenían los ID de los productos de carrito a medida que el usuario selecciona los productos.
+
+## Manejo de inventario
+
+Para el manejo de inventario se implementó un módulo de usuario donde se presentan las opciones de modificación de inventario. Se creó un campo bool en la tabla de usuarios para asignar administradores para verificar que solo los usuarios con rol de administrador tienen permisos para realizar cambios en la información de los productos del Marketplace, adicionalmente se implementó una tabla donde se despliegan las órdenes de compra cada usuario completó en el Marketplace con su identificador y el valor total de cada orden.
