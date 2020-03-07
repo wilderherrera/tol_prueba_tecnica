@@ -12,11 +12,17 @@
                 <p class="card-text"><b>Disponibilidad: </b> {{$producto->stock}} Unidades</p>
             </div>
                 <hr>
+                @if($producto->stock>0)
                 <div class="col-md-6 offset-md-3 text-center">
                     <button class="btn btn-success" onclick="add_carrito({{$producto->id}})"><span class="fas fa-plus"></span> Añadir al carrito</button>
                     <hr>
                     <button class="btn btn-warning" onclick="subb_carrito({{$producto->id}})"><span class="fas fa-trash-alt"></span> Quitar del carrito</button>
                 </div>
+                @else
+                    <div class="col-md-6 offset-md-3 text-center">
+                        <h6 class="text-danger"><b>* Este producto no esta disponible</b></h6>
+                    </div>
+                    @endif
                 <br>
             </div>
         </div>

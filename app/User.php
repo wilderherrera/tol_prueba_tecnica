@@ -44,6 +44,6 @@ class User extends Authenticatable
     }
 
     public function ordenes_rel(){
-        return $this->hasMany('ordenes','id_usuario','id');
+        return $this->hasMany('App\ordenes','id_usuarios','id');
     }
 }

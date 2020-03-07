@@ -32,9 +32,18 @@
                     <a class="navbar-brand text-white" href="{{route('tienda')}}">Tienda Tol</a>
                     <div class="col-md-10 text-right">
                         @if(Auth::check())
-                            <a href="{{route('perfil')}}" class="text-right text-white"><span style="color:#282e3d" class="fas fa-user text-light"></span><b> {{Auth::user()->nombre}}</b></a>
+                            <table align="right">
+                                <tr>
+                                    <td><a href="{{route('perfil')}}" class="text-right text-white"><span style="color:#282e3d" class="fas fa-user text-light"></span><b> {{Auth::user()->nombre}}</b></a></td>
+                                    <td><form method="post" action="{{route('logout')}}">
+                                            @csrf
+                                            <button style="background-color: transparent;border-width:0 " class="text-info btn btn-light"><span class="fas fa-times"></span> Cerrar session</button>
+                                        </form></td>
+
+                                </tr>
+                            </table>
                         @else
-                            <a href="{{route('login')}}"><span class="fa fa-login"></span> Ingresar</a>
+                            <a href="{{route('login')}}"><span class="fa fa-door-closed"></span> Ingresar</a>
                         @endif
                     </div>
 
