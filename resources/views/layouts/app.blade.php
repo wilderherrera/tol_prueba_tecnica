@@ -30,6 +30,7 @@
             <div class="col-md-12 bg-dark" id="header">
                 <nav class="navbar navbar-expand-lg navbar-white">
                     <a class="navbar-brand text-white" href="{{route('tienda')}}">Tienda Tol</a>
+
                     <div class="col-md-10 text-right">
                         @if(Auth::check())
                             <table align="right">
@@ -45,9 +46,10 @@
                         @else
                             <a href="{{route('login')}}"><span class="fa fa-door-closed"></span> Ingresar</a>
                         @endif
+
                     </div>
 
-                    <a href="{{route('orden')}}" ><span class="fas fa-shopping-cart"></span><p id="carrito_conteo" class="text-info" style="font-weight: bold"></a>
+                        <a href="{{route('orden')}}"><span class="fas fa-shopping-cart"></span><p id="carrito_conteo" class="text-info" style="font-weight: bold"></a>
 
                 </nav>
             </div>

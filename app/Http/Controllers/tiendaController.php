@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class tiendaController extends Controller
 {
+
+
+
     public function index(Request $request){
             if(\Session::has('productos_carrito') && is_array(\Session::get('productos_carrito')))
                 {
@@ -22,5 +25,19 @@ class tiendaController extends Controller
                     ]);
     }
 
+
+    public function ver_producto($id){
+        if(\Session::has('productos_carrito'))
+        {
+            $productos_carrito=count(\Session::get('productos_carrito'));
+        }
+            else{
+                $productos_carrito=0;
+            }
+
+        return view('tienda.ver_producto')->with(['producto'=>\App\productos::find($id),
+                                                    'productos_carrito'=>$productos_carrito,
+                                                    ]);
+    }
 
 }

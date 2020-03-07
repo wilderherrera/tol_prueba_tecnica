@@ -12,26 +12,14 @@
 */
 Auth::routes();
 
-Route::prefix('orden')->group(function (){
 
-    Route::get('/','ordenController@orden')
-        ->name('orden');
-
-    Route::get('/finalizar','ordenController@finalizar')
-            ->name('orden.finalizar');
-});
-
-
-Route::get('/carrito','carritoController@index');
 
 
 Route::get('/quitar_carrito/{id}','carritoController@quitar_producto_carrito')
         ->name('quitar_de_carrito')
         ->middleware('auth');;
 
-Route::get('/','tiendaController@index')->name('tienda');
-
-
+        //Rutas con prefijos
 Route::prefix('productos')->group(function (){
     Route::get('/','productosController@index')->name('productos.index');
     Route::get('/crear','productosController@create')->name('productos.crear');
@@ -47,7 +35,20 @@ Route::prefix('perfil')->group(function(){
         ->name('perfil');
 });
 
+Route::prefix('orden')->group(function (){
 
+    Route::get('/','ordenController@orden')
+        ->name('orden');
+
+    Route::get('/finalizar','ordenController@finalizar')
+        ->name('orden.finalizar');
+});
+
+
+Route::get('/{id}','tiendaController@ver_producto')
+    ->name('producto.ver');
+
+Route::get('/','tiendaController@index')->name('tienda');
 
 
 
