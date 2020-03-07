@@ -45,13 +45,23 @@ class productosController extends Controller
                 'precio'=>'required|min:0',
                 'descripcion'=>'required',
                 'stock'=>'required',
+                'imagen_producto'=>'image|max:5000',
         ]);
 
-        productos::create([
+        $id_producto=productos::create([
             'nombre'=>$request->input('nombre'),
             'precio'=>$request->input('precio'),
             'descripcion'=>$request->input('descripcion'),
             'stock'=>$request->input('stock'),
+
+        ])->id;
+
+        $path_foto=$request->file('imagen_producto')
+            ->storeAs('/imagenes',
+                $id_producto.'.'.$request->file('imagen_producto')->getClientOriginalExtension(),'public');
+
+        productos::find($id_producto)->update([
+            'imagen_producto'=>$path_foto,
         ]);
 
         return redirect(route('productos.index'));
@@ -90,15 +100,29 @@ class productosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validation=$request->validate([
 
+            'precio'=>'required|min:0',
+            'descripcion'=>'required',
+            'stock'=>'required',
+            'imagen_producto'=>'image|max:5000',
+        ]);
 
         productos::find($id)->update([
             'nombre'=>$request->input('nombre'),
             'precio'=>$request->input('precio'),
             'stock'=>$request->input('stock'),
             'descripcion'=>$request->input('descripcion'),
+
         ]);
 
+        $path_foto=$request->file('imagen_producto')
+            ->storeAs('/imagenes',
+                $id.'.'.$request->file('imagen_producto')->getClientOriginalExtension(),'public');
+
+        productos::find($id)->update([
+            'imagen_producto'=>$path_foto,
+        ]);
         return redirect(route('productos.index'));
     }
 

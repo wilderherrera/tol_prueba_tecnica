@@ -4,7 +4,7 @@
         <div class="col-md-6 offset-md-3 my-5 bg-light p-5 text-left" style="border-radius: 15px">
             <h4 class="text-center text-secondary"><span class="fas fa-plus"></span> Modulo para creación de productos</h4>
             <hr>
-            <form class="form col-md-10 offset-md-1" method="POST" action="{{route('productos.guardar')}}" >
+            <form class="form col-md-10 offset-md-1" method="POST" action="{{route('productos.guardar')}}" enctype="multipart/form-data">
                 @csrf
                 <label for="nombre"><span class="fas fa-tags"></span> Nombre del producto</label>
                 @error('nombre')
@@ -26,6 +26,12 @@
                     <hr>
                 <label for="descripcion"><span class="fas fa-file-alt"></span> Descripcion</label>
                 <textarea class="form-control" name="descripcion">{{old('descripcion')}}</textarea>
+                <hr>
+                <label for="imagen"><span class="fas fa-image"></span> Imagen del producto</label>
+                <input type="file" name="imagen_producto" required>
+                @error('imagen_producto')
+                <p class="text-danger"><b>* Verfica la extension o el tamaño de la imagen</b></p>
+                @enderror
                 <hr>
                 <button type="submit" class="btn btn-lg btn-info"><span class="fas fa-check"></span> Crear</button>
             </form>

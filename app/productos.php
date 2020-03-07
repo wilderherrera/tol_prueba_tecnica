@@ -14,8 +14,12 @@ class productos extends Model
         'precio',
         'stock',
         'descripcion',
+        'imagen_producto',
     ];
 
+    public function getImagenProductoAttribute($value){
+            return '/storage/'.$value;
+    }
     public function setNombreAttribute($value){
         $this->attributes['nombre']=ucwords(strtolower($value));
     }

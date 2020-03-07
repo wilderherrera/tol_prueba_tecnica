@@ -4,6 +4,7 @@
         @forelse($productos as $producto)
         <div class="col-md-4 my-3">
             <div class="card">
+                <img class="card-img-top" src="{{$producto->imagen_producto}}" alt="Card image cap" height="300" width="100">
             <div class="card-body bg-light">
                 <h5 class="card-title">{{$producto->nombre}}</h5>
                 <p class="card-text"><b>Descripcion: </b>{{$producto->descripcion}}</p>
