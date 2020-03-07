@@ -32,8 +32,12 @@
                 <p><b>NO SE ENCONTRARON PRODUCTOS REGISTRADOS</b></p>
             </div>
         @endforelse
-
+            <div class="col-md-6 offset-md-5 text-center">
+                {!! $productos->render() !!}
+            </div>
     </div>
+
+
 @endsection
 @section('javascript')
     <script>

@@ -17,7 +17,7 @@ class tiendaController extends Controller
             }
             return view('tienda.principal')
                     ->with([
-                        'productos'=>productos::all(),
+                        'productos'=>productos::paginate(5), // Maximo 5 productos en la tienda por pagina
                         'productos_carrito'=>$productos_carrito,
                     ]);
     }
